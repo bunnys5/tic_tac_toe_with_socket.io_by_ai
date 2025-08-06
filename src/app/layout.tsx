@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { ConvexClientProvider } from '../providers/ConvexProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} main-fallback`}>
-        <main className="min-h-screen flex flex-col items-center justify-center p-4 main-fallback">
-          {children}
-        </main>
+        <ConvexClientProvider>
+          <main className="min-h-screen flex flex-col items-center justify-center p-4 main-fallback">
+            {children}
+          </main>
+        </ConvexClientProvider>
       </body>
     </html>
   );

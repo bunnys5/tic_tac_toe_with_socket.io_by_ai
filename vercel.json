@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "pages/api/socket.js": {
-      "maxDuration": 30
-    }
-  }
-}
+{}
