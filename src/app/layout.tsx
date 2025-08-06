@@ -16,8 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="min-h-screen flex flex-col items-center justify-center p-4">
+      <body className={`${inter.className} main-fallback`}>
+        <main className="min-h-screen flex flex-col items-center justify-center p-4 main-fallback">
           {children}
         </main>
       </body>

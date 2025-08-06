@@ -1,19 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
-    'game-cell',
-    'game-cell-x',
-    'game-cell-o',
-    'btn',
-    'btn-primary',
-    'btn-secondary',
-    'btn-danger',
+    // Ensure these classes are never purged
+    'w-full', 'px-4', 'py-2', 'rounded-md', 'font-medium', 'transition-colors',
+    'bg-blue-500', 'bg-blue-600', 'bg-green-500', 'bg-green-600',
+    'text-white', 'hover:bg-blue-600', 'hover:bg-green-600',
+    'min-h-screen', 'flex', 'flex-col', 'items-center', 'justify-center',
+    'p-4', 'max-w-md', 'p-6', 'bg-white', 'rounded-lg', 'shadow-md',
+    'text-3xl', 'font-bold', 'text-center', 'mb-6', 'space-y-6',
   ],
   theme: {
     extend: {

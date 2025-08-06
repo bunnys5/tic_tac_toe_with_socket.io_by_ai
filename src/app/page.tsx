@@ -29,14 +29,25 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold text-center mb-6">Tic Tac Toe Online</h1>
+    <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md container-fallback">
+      <h1 className="text-3xl font-bold text-center mb-6" style={{ fontSize: '1.875rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '1.5rem' }}>Tic Tac Toe Online</h1>
       
-      <div className="space-y-6">
+      <div className="space-y-6" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div>
           <button 
             onClick={createNewGame}
-            className="w-full px-4 py-2 rounded-md font-medium transition-colors bg-blue-500 text-white hover:bg-blue-600"
+            className="w-full px-4 py-2 rounded-md font-medium transition-colors bg-blue-500 text-white hover:bg-blue-600 btn-primary-fallback"
+            style={{
+              width: '100%',
+              padding: '8px 16px',
+              borderRadius: '6px',
+              fontWeight: '500',
+              backgroundColor: '#3b82f6',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
           >
             Create New Game
           </button>
@@ -71,7 +82,19 @@ export default function Home() {
           </div>
           <button 
             type="submit" 
-            className="w-full px-4 py-2 rounded-md font-medium transition-colors bg-green-500 text-white hover:bg-green-600"
+            className="w-full px-4 py-2 rounded-md font-medium transition-colors bg-green-500 text-white hover:bg-green-600 btn-secondary-fallback"
+            style={{
+              width: '100%',
+              padding: '8px 16px',
+              borderRadius: '6px',
+              fontWeight: '500',
+              backgroundColor: '#10b981',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'background-color 0.2s',
+              opacity: loading ? 0.5 : 1
+            }}
             disabled={loading}
           >
             {loading ? 'Joining...' : 'Join Game'}

@@ -1,19 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
+  "functions": {
+    "pages/api/socket.js": {
+      "maxDuration": 30
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/socket",
-      "dest": "/api/socket"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
+  }
 }
