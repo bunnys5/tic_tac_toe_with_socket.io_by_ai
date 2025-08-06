@@ -1,8 +1,7 @@
-import { NextRequest } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { Server as NetServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
-import { NextApiResponse } from 'next';
-import { GameState } from '../../../types/game';
+import { GameState } from '../../src/types/game';
 
 type NextApiResponseWithSocket = NextApiResponse & {
   socket: {
@@ -15,7 +14,7 @@ type NextApiResponseWithSocket = NextApiResponse & {
 // Game rooms storage
 const games = new Map<string, GameState>();
 
-export function GET(req: NextRequest, res: NextApiResponseWithSocket) {
+export default function handler(req: NextApiRequest, res: NextApiResponseWithSocket) {
   if (!res.socket.server.io) {
     console.log('Initializing Socket.IO server...');
     
@@ -193,5 +192,5 @@ export function GET(req: NextRequest, res: NextApiResponseWithSocket) {
     });
   }
 
-  return new Response('Socket.IO server is running', { status: 200 });
+  res.end();
 }

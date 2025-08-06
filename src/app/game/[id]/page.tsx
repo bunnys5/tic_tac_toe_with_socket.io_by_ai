@@ -13,8 +13,13 @@ let socket: Socket;
 
 export default function GamePage() {
   const params = useParams();
+
+  if (!params?.id) {
+    return <div>Invalid game ID</div>;
+  }
+
   const gameId = params.id as string;
-  
+
   const [connected, setConnected] = useState(false);
   const [gameState, setGameState] = useState<GameState>({
     board: Array(9).fill(null),
@@ -41,15 +46,15 @@ export default function GamePage() {
       socket.on('connect', () => {
         console.log('Connected to socket server');
         setConnected(true);
-        setPlayerId(socket.id);
-        
+        setPlayerId(socket.id || null);
+
         // Join the game room
         socket.emit('joinGame', { gameId });
       });
 
       socket.on('gameState', (state: GameState) => {
         setGameState(state);
-        
+
         // Determine player symbol
         if (socket.id === state.players.X) {
           setPlayerSymbol('X');
@@ -123,8 +128,8 @@ export default function GamePage() {
               <span className="text-sm font-medium">Game ID: </span>
               <span className="font-mono">{gameId}</span>
             </div>
-            <button 
-              onClick={copyGameId} 
+            <button
+              onClick={copyGameId}
               className="text-sm btn btn-primary py-1"
             >
               {copied ? 'Copied!' : 'Copy ID'}
@@ -132,30 +137,30 @@ export default function GamePage() {
           </div>
 
           <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <PlayerInfo 
-              symbol="X" 
-              isConnected={Boolean(gameState.players.X)} 
+            <PlayerInfo
+              symbol="X"
+              isConnected={Boolean(gameState.players.X)}
               isCurrentPlayer={gameState.currentPlayer === 'X'}
               isYou={playerSymbol === 'X'}
             />
-            <PlayerInfo 
-              symbol="O" 
-              isConnected={Boolean(gameState.players.O)} 
+            <PlayerInfo
+              symbol="O"
+              isConnected={Boolean(gameState.players.O)}
               isCurrentPlayer={gameState.currentPlayer === 'O'}
               isYou={playerSymbol === 'O'}
             />
           </div>
 
-          <GameStatus 
-            winner={gameState.winner} 
-            isDraw={gameState.isDraw} 
+          <GameStatus
+            winner={gameState.winner}
+            isDraw={gameState.isDraw}
             isYourTurn={playerSymbol === gameState.currentPlayer}
             isPlayer={playerSymbol !== null}
           />
 
-          <GameBoard 
-            board={gameState.board} 
-            onCellClick={handleCellClick} 
+          <GameBoard
+            board={gameState.board}
+            onCellClick={handleCellClick}
             winnerSymbol={gameState.winner}
           />
 
@@ -168,8 +173,8 @@ export default function GamePage() {
               )}
             </div>
             {(gameState.winner || gameState.isDraw) && (
-              <button 
-                onClick={resetGame} 
+              <button
+                onClick={resetGame}
                 className="btn btn-secondary"
                 disabled={!connected}
               >
