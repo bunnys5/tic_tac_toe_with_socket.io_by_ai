@@ -35,4 +35,3 @@ next-env.d.ts
 
 # convex
 .env.local
-convex/_generated/
