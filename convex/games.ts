@@ -54,6 +54,8 @@ export const joinGame = mutation({
         spectators: 0,
         lastActivity: Date.now(),
       });
+
+      
       
       game = await ctx.db
         .query("games")
