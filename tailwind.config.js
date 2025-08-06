@@ -4,6 +4,16 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  safelist: [
+    'game-cell',
+    'game-cell-x',
+    'game-cell-o',
+    'btn',
+    'btn-primary',
+    'btn-secondary',
+    'btn-danger',
   ],
   theme: {
     extend: {

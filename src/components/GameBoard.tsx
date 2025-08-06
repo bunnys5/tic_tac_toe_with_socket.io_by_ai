@@ -17,9 +17,9 @@ const GameBoard: React.FC<GameBoardProps> = ({ board, onCellClick, winnerSymbol 
           <div 
             key={index}
             className={`
-              game-cell
-              ${cell === 'X' ? 'game-cell-x' : ''}
-              ${cell === 'O' ? 'game-cell-o' : ''}
+              flex items-center justify-center text-4xl font-bold border-2 border-gray-300 cursor-pointer transition-all duration-200 hover:bg-gray-100
+              ${cell === 'X' ? 'text-blue-500' : ''}
+              ${cell === 'O' ? 'text-red-500' : ''}
               ${isWinningCell ? 'bg-yellow-100 animate-pulse-slow' : ''}
             `}
             onClick={() => onCellClick(index)}

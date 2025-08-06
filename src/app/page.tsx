@@ -36,7 +36,7 @@ export default function Home() {
         <div>
           <button 
             onClick={createNewGame}
-            className="w-full btn btn-primary"
+            className="w-full px-4 py-2 rounded-md font-medium transition-colors bg-blue-500 text-white hover:bg-blue-600"
           >
             Create New Game
           </button>
@@ -71,7 +71,7 @@ export default function Home() {
           </div>
           <button 
             type="submit" 
-            className="w-full btn btn-secondary"
+            className="w-full px-4 py-2 rounded-md font-medium transition-colors bg-green-500 text-white hover:bg-green-600"
             disabled={loading}
           >
             {loading ? 'Joining...' : 'Join Game'}

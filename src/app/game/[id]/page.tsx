@@ -130,7 +130,7 @@ export default function GamePage() {
             </div>
             <button
               onClick={copyGameId}
-              className="text-sm btn btn-primary py-1"
+              className="text-sm px-4 py-1 rounded-md font-medium transition-colors bg-blue-500 text-white hover:bg-blue-600"
             >
               {copied ? 'Copied!' : 'Copy ID'}
             </button>
@@ -175,7 +175,7 @@ export default function GamePage() {
             {(gameState.winner || gameState.isDraw) && (
               <button
                 onClick={resetGame}
-                className="btn btn-secondary"
+                className="px-4 py-2 rounded-md font-medium transition-colors bg-green-500 text-white hover:bg-green-600 disabled:opacity-50"
                 disabled={!connected}
               >
                 Play Again
